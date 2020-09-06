@@ -13,101 +13,51 @@
   <div class="container-fluid">
     <div class="jumbotron text-center">
       <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-sm" href="/scrape" role="button">Scrape New Data</a></p>
+      <p><a class="btn btn-primary btn-md" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
-
-    <h3><strong>Latest Mars News</strong></h3>
-    <h4>{{  }}</h4>
-    <h5>{{  }}</h5>
-
-    <div class="row">
-        <div class="col-8">
-        <h3><strong>Featured Mars Image</strong></h3>   
-        <img src="{{ _____.img }}" alt="_____">
-        </div>
-
-        <div class="col-4">
-        <h4><strong>Mars Facts</strong></h4>   
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-              <tr>
-                <th>Description</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>Equatorial Diameter:</th>
-                <td>6,792 km</td>
-              </tr>
-              <tr>
-                <th>Polar Diameter:</th>
-                <td>6,752 km</td>
-              </tr>
-              <tr>
-                <th>Mass:</th>
-                <td>6.39 × 10^23 kg (0.11 Earths)</td>
-              </tr>
-              <tr>
-                <th>Moons:</th>
-                <td>2 (Phobos &amp; Deimos)</td>
-              </tr>
-              <tr>
-                <th>Orbit Distance:</th>
-                <td>227,943,824 km (1.38 AU)</td>
-              </tr>
-              <tr>
-                <th>Orbit Period:</th>
-                <td>687 days (1.9 years)</td>
-              </tr>
-              <tr>
-                <th>Surface Temperature:</th>
-                <td>-87 to -5 °C</td>
-              </tr>
-              <tr>
-                <th>First Record:</th>
-                <td>2nd millennium BC</td>
-              </tr>
-              <tr>
-                <th>Recorded By:</th>
-                <td>Egyptian astronomers</td>
-              </tr>
-            </tbody>
-        </table>    
-        </div>
-
-    </div>
-
-<!-- THIS MIGHT BE A LOOP/NEED JUST ONE -->
-  <div class="row">
-    <h3 class="text-center"><strong>Mars Hemispheres</strong></h3> 
-    <div class="row mb-2 mt-3">
-        <div class="col-6">
-          <img src="      " alt="   " width="100%">
-          <h4>Mars name?</h4>
-        </div>
-
-        <div class="col-6">
-            <img src="      " alt="   " width="100%">
-            <h4>Mars name?</h4>
-        </div>
-    </div>
-
-    <div class="row mb-2">
-        <div class="col-6">
-            <img src="      " alt="   " width="100%">
-            <h4>Mars name?</h4>
-        </div>
+  </div>
   
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-1"></div>
+      <div class="col-10">
+      <h3><strong>Latest Mars News</strong></h3>
+      <h4>{{ marshtml.news_title }}</h4>
+      <h5>{{ marshtml.article }}</h5>
+    </div>
+    </div>
+
+      <div class="row mb-2 mt-3">
+        <div class="col-1"></div>
         <div class="col-6">
-              <img src="      " alt="   " width="100%">
-              <h4>Mars name?</h4>
+          <h3><strong>Featured Mars Image</strong></h3>   
+          <img src="{{ marshtml.featured_img_url }}" alt="featured_mars_img" width="800px">
+        </div>
+        <div class="col-4 pl-5">
+          <h4><strong>Mars Facts</strong></h4>
+          {{ marshtml.mars_fact }}
+        </div>
+      </div>
+    </div>
+
+  <div class="row mb-2">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="text-center pb-3 pt-3 border-bottom"><strong>Mars Hemispheres</strong></h3> 
+          <div class="row mb-2 mt-3 ml-5">
+              {% for mars in marshtml.mars_hemisphere %}
+              <div class="col-6">
+                <img src="{{ mars.img_url }}" alt="{{ mars.title }}" width="85%">
+                <h4>{{ mars.title }}</h4>
+              </div>
+              {% endfor %}
+          </div>
         </div>
     </div>
   </div>
-<!-- Placeholder ends here -->
-
   </div>
 </body>
 
 </html>
+

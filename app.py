@@ -16,7 +16,7 @@ def home():
     mars_scrape_data = mongo.db.collection.find_one()
 
     # Return template and data
-    return render_template("index.html", TOBEUPDATED=mars_scrape_data)
+    return render_template("index.html", marshtml=mars_scrape_data)
 
 
 # Route that will trigger the scrape function
@@ -24,10 +24,10 @@ def home():
 def scrape():
 
     # Run the scrape function
-    mars_data = scrape_mars.scrape()
+    mars_scrape = scrape_mars.scrape()
 
     # Update the Mongo database using update and upsert=True
-    mongo.db.collection.update({}, mars_data, upsert=True)
+    mongo.db.collection.update({}, mars_scrape, upsert=True)
 
     # Redirect back to home page
     return redirect("/")

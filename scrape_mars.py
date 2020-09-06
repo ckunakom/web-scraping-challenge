@@ -72,19 +72,18 @@ def scrape():
 
     # Raneme the column
     df = df.rename(columns={0: 'Description',
-                        1: 'Mars'})
+                            1: 'Mars'})
 
     # Set the index to the `abb` column
     df.set_index('Description', inplace=True)
-    df
 
     # Generate HTML tables from DataFrames
     html_mars_table = df.to_html()
 
     # Convert df to html
     df.to_html('mars_table.html')
-    print('HTML Table Generated')
 
+    print(html_mars_table)
 
     ### Mars Hemispheres###
     #-------------------------------------

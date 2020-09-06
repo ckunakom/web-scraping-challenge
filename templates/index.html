@@ -7,13 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/minty.css">
 </head>
 
 <body>
   <div class="container-fluid">
     <div class="jumbotron text-center">
-      <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-md" href="/scrape" role="button">Scrape New Data</a></p>
+      <h1 class="text-primary display-3">Mission to Mars</h1>
+      <p class="lead"><a class="btn btn-warning" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
   </div>
   
@@ -21,21 +22,21 @@
     <div class="row mb-2">
       <div class="col-1"></div>
       <div class="col-10">
-      <h3><strong>Latest Mars News</strong></h3>
-      <h4>{{ marshtml.news_title }}</h4>
-      <h5>{{ marshtml.article }}</h5>
+      <h3 class="text-secondary border-bottom"><strong>Latest Mars News</strong></h3>
+      <h5>{{ marshtml.news_title }}</h4>
+      <h6 class="text-muted">{{ marshtml.article }}</h6>
     </div>
     </div>
 
       <div class="row mb-2 mt-3">
         <div class="col-1"></div>
-        <div class="col-6">
-          <h3><strong>Featured Mars Image</strong></h3>   
-          <img src="{{ marshtml.featured_img_url }}" alt="featured_mars_img" width="800px">
+        <div class="col-6 pr-5">
+          <h3 class="text-secondary border-bottom"><strong>Featured Mars Image</strong></h3>   
+          <img src="{{ marshtml.featured_img_url }}" alt="featured_mars_img" width="750px">
         </div>
         <div class="col-4 pl-5">
-          <h4><strong>Mars Facts</strong></h4>
-          {{ marshtml.mars_fact }}
+          <h4 class="text-secondary"><strong>Mars Facts</strong></h4>
+          <div class="mars">{{ marshtml.mars_fact | safe }}</div>
         </div>
       </div>
     </div>
@@ -44,12 +45,12 @@
     <div class="col-1"></div>
     <div class="col-10">
         <div class="col p-4 d-flex flex-column position-static">
-          <h3 class="text-center pb-3 pt-3 border-bottom"><strong>Mars Hemispheres</strong></h3> 
+          <h3 class="text-secondary text-center pb-3 pt-3 border-bottom"><strong>Mars Hemispheres</strong></h3> 
           <div class="row mb-2 mt-3 ml-5">
               {% for mars in marshtml.mars_hemisphere %}
-              <div class="col-6">
+              <div class="col-6 mb-3">
                 <img src="{{ mars.img_url }}" alt="{{ mars.title }}" width="85%">
-                <h4>{{ mars.title }}</h4>
+                <h4 class="text-danger">{{ mars.title }}</h4>
               </div>
               {% endfor %}
           </div>
@@ -57,7 +58,12 @@
     </div>
   </div>
   </div>
-</body>
 
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  
+  </body> 
 </html>
 
